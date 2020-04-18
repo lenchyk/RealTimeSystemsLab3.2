@@ -3,5 +3,7 @@
     <string name="mainText">Choose parameters of Perceptron</string>
     <string name="learningRate">Learning rate</string>
     <string name="deadline">Deadline (max of iterations)</string>
-    <string name="result">w1 = %1$f \nw2 = %2$f \nwith time of execution %3$d ns\nand %4$d iterations</string>
+    <string name="result">w1 = %1$f \nw2 = %2$f \nwith %3$d iterations</string>
+    <string name="button2">Get execution time</string>
+    <string name="time">Time of execution of perceptron: \n %d \n nanoseconds</string>
 </resources>

@@ -1,8 +1,13 @@
 package com.example.perceptron;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.AdapterView;
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                // показываем позиция нажатого элемента
+                // showing position of selected item
                 Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
                 maxIterations = Integer.parseInt(deadline[position]);
             }
@@ -75,17 +80,29 @@ public class MainActivity extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.button);
         result = (TextView) findViewById(R.id.result);
+        //time = (TextView) findViewById(R.id.time);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                perceptron();
+                final long  timeEx = perceptron();
+                // time button
+                Button button2 = (Button) findViewById(R.id.button2);
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Popup popup = new Popup();
+                        popup.showPopupWindow(view, timeEx);
+                    }
+                });
+
             }
         });
 
     }
 
+
     // main function
-    void perceptron(){
+    public long perceptron(){
         int epochs = 0;
         int threshold = 4;
         float delta = 0;
@@ -114,9 +131,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
         long endTime = System.nanoTime();
-        long time = endTime - startTime;
-        String finalResult = (String) getString(R.string.result, weights[0], weights[1], time, epochs);
+        long execTime = endTime - startTime;
+        String finalResult = (String) getString(R.string.result, weights[0], weights[1], epochs);
         result.setText(finalResult);
+        return execTime;
     }
 
     public double product(double a[], double b[]) {
