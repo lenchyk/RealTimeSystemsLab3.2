@@ -21,8 +21,8 @@ See results (Press "GO" button)
 (Recently added)
 If you want to see time of execution, then press the "See execution time" button:
 
-<img src="images/img5.png" height=500)>
+<img src="images/img6.png" height=500)>
 
 Pop-up window:
 
-<img src="images/img6.png" height=500)>
+<img src="images/img5.png" height=500)>
